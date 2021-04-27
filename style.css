@@ -16,13 +16,28 @@ h1 {
     color: white;
     text-align: center;
 }
+h2 {
+    text-align: center;
+    border-bottom:solid 2px lightgray;
+}
+.sub-title {
+    letter-spacing: 0.8em;
+    margin-bottom: 15px;
+    padding-bottom: 8px;
+}
 
-
-.form-area {
-    margin: 8px 18%;
+.form-area,
+.incomplete-area,
+.complete-area,
+.edit-area {
+    margin: 10px 18%;
     border-radius: 5px;
     background-color: white;
-    padding: 10px 20px;
+    padding: 20px 40px;
+}
+
+.form-area {
+    height: 200px;
 }
 
 input {
@@ -32,15 +47,57 @@ input {
 }
 
 .incomplete-area {
-    margin: 10px 18%;
-    border-radius: 5px;
-    background-color: white;
-    padding: 10px 20px;
+    height: 230px;
 }
 
 .complete-area {
-    margin: 10px 18%;
+    height: 180px;
+}
+
+.edit-area {
+    height: 300px;
+}
+
+/* ボタン */
+.btn {
+    color: #fff;
     border-radius: 5px;
-    background-color: white;
-    padding: 10px 20px;
+    text-align: center;
+}
+.submit-btn:hover {
+    background-color:rgb(255, 154, 255);
+}
+.return-btn:hover {
+    background-color:rgb(113, 113, 255);
+}
+.submit-btn, 
+.return-btn {
+    width: 100%;
+    margin-top: 20px;
+    padding: 5px 0;
+    letter-spacing: 1.5rem;
+}
+.submit-btn {
+    background-color: rgb(255, 0, 242);
+}
+.return-btn {
+    display: block;
+    background-color: blue;
+    text-decoration: none;
+}
+.done-btn,
+.edit-btn,
+.delete-btn {
+    font-size: 0.9rem;
+    margin-right: 3px;
+    padding: 5px;
+}
+.done-btn {
+    background-color: #29cd70;
+}
+.edit-btn {
+    background-color: rgb(47, 147, 240);
+}
+.delete-btn {
+    background-color: #f96262;
 }
