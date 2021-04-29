@@ -3,6 +3,21 @@ require_once __DIR__ . '/functions.php';
 
 $dbh = connectDb();
 
+$sql = <<<EOM
+SELECT
+    *
+FROM 
+    plans
+WHERE
+    completion_date IS NULL
+EOM;
+
+$stmt = $dbh->prepare($sql);
+
+$stmt->execute();
+
+$incomplete_plans = $stmt->fetchAll(PDO::FETCH_ASSOC);
+var_dump($incomplete_plans);
 ?>
 
 <!DOCTYPE html>
@@ -37,6 +52,16 @@ $dbh = connectDb();
                     </tr>
                 </thead>
                 <tbody>
+                    <ul>
+                        <?php foreach ($incomplete_plans as $plan) : ?>
+                            <li>
+                                <?= h($plan['title']) ?>
+                                <a href="" class="btn done-btn">完了</a>
+                                <a href="" class="btn edit-btn">編集</a>
+                                <a href="" class="btn delete-btn">削除</a>
+                            </li>
+                        <?php endforeach; ?>
+                    </ul>
 
                     <!-- 未完了のデータを表示 -->
 
