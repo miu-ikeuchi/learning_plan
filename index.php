@@ -17,7 +17,6 @@ $stmt = $dbh->prepare($sql);
 $stmt->execute();
 
 $incomplete_plans = $stmt->fetchAll(PDO::FETCH_ASSOC);
-var_dump($incomplete_plans);
 ?>
 
 <!DOCTYPE html>
@@ -52,19 +51,16 @@ var_dump($incomplete_plans);
                     </tr>
                 </thead>
                 <tbody>
-                    <ul>
+                    <tr>
                         <?php foreach ($incomplete_plans as $plan) : ?>
-                            <li>
-                                <?= h($plan['title']) ?>
-                                <a href="" class="btn done-btn">完了</a>
-                                <a href="" class="btn edit-btn">編集</a>
-                                <a href="" class="btn delete-btn">削除</a>
-                            </li>
+
+                            <td><?= h($plan['title']) ?></td>
+                            <td><?= h($plan['due_date']) ?></td>
+                            <a href="" class="btn done-btn">完了</a>
+                            <a href="" class="btn edit-btn">編集</a>
+                            <a href="" class="btn delete-btn">削除</a>
                         <?php endforeach; ?>
-                    </ul>
-
-                    <!-- 未完了のデータを表示 -->
-
+                    </tr>
                 </tbody>
             </table>
         </div>

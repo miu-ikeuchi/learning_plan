@@ -91,18 +91,39 @@ input {
     font-size: 0.9rem;
     margin-right: 3px;
     padding: 5px;
+    align-items: right;
 }
 .done-btn {
-    background-color: #29cd70;
+    background-color: blue;
 }
 .edit-btn {
-    background-color: rgb(47, 147, 240);
+    background-color:orange;
 }
 .delete-btn {
-    background-color: #f96262;
+    background-color: red;
 }
 
-/* 未達成 */
+/* table */
+table {
+    table-layout: fixed;
+    width: 680px;
+}
+.plan-title,
+.plan-due-date {
+    text-align: left;
+}
+.done-link-area,
+.edit-link-area,
+.delete-link-area {
+    text-align: right;
+    width: 50px;
+}
+.plan-title {
+    width: 300px;
+}
+.plan-due-date {
+    width: 150px;
+}
 
 @media (max-width: 800px) {
 }
