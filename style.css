@@ -25,7 +25,7 @@ h2 {
     margin-bottom: 15px;
     padding-bottom: 8px;
 }
-
+/* 外枠 */
 .form-area,
 .incomplete-area,
 .complete-area,
@@ -84,6 +84,18 @@ input {
 .return-btn {
     display: block;
     background-color: blue;
+}
+.done-btn:hover {
+    background-color:rgb(113, 113, 255);
+}
+.edit-btn:hover {
+    background-color: rgb(255, 202, 104);
+}
+.delete-btn:hover {
+    background-color:rgb(255, 97, 97);
+}
+.done-cancel-btn:hover {
+    background-color:rgb(162, 248, 123);
 }
 .done-btn,
 .edit-btn,
