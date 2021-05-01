@@ -25,6 +25,14 @@ h2 {
     margin-bottom: 15px;
     padding-bottom: 8px;
 }
+.errors {
+    color: #ed2222;
+    background-color: #f0cdcd;
+    list-style: none;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    padding: 10px 20px;
+}
 /* 外枠 */
 .form-area,
 .incomplete-area,
@@ -36,26 +44,10 @@ h2 {
     padding: 20px 40px;
 }
 
-.form-area {
-    height: 200px;
-}
-
 input {
     border: 1px solid #b8b4b4;
     border-radius: 3px;
     width: 100%;
-}
-
-.incomplete-area {
-    height: 230px;
-}
-
-.complete-area {
-    height: 200px;
-}
-
-.edit-area {
-    height: 300px;
 }
 
 /* ボタン */
