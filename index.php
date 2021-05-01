@@ -1,22 +1,11 @@
 <?php
 require_once __DIR__ . '/functions.php';
+require_once __DIR__ . '/config.php';
 
-$dbh = connectDb();
+// 未達成プランの取得
+$incomplete_plans = findPlanByDate(PLAN_DATE_NULL);
 
-$sql = <<<EOM
-SELECT
-    *
-FROM 
-    plans
-WHERE
-    completion_date IS NULL
-EOM;
-
-$stmt = $dbh->prepare($sql);
-
-$stmt->execute();
-
-$incomplete_plans = $stmt->fetchAll(PDO::FETCH_ASSOC);
+$completed_plans = findPlanByCompDate(PLAN_DATE_COMP);
 ?>
 
 <!DOCTYPE html>
@@ -51,16 +40,15 @@ $incomplete_plans = $stmt->fetchAll(PDO::FETCH_ASSOC);
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <?php foreach ($incomplete_plans as $plan) : ?>
-
+                    <?php foreach ($incomplete_plans as $plan) : ?>
+                        <tr>
                             <td><?= h($plan['title']) ?></td>
-                            <td><?= h($plan['due_date']) ?></td>
-                            <a href="" class="btn done-btn">完了</a>
-                            <a href="" class="btn edit-btn">編集</a>
-                            <a href="" class="btn delete-btn">削除</a>
-                        <?php endforeach; ?>
-                    </tr>
+                            <td><?= h(date('Y/m/d', strtotime($plan['due_date']))) ?></td>
+                            <td><a href="" class="btn done-btn">完了</a></td>
+                            <td><a href="" class="btn edit-btn">編集</a></td>
+                            <td><a href="" class="btn delete-btn">削除</a></td>
+                        </tr>
+                    <?php endforeach; ?>
                 </tbody>
             </table>
         </div>
@@ -77,9 +65,15 @@ $incomplete_plans = $stmt->fetchAll(PDO::FETCH_ASSOC);
                     </tr>
                 </thead>
                 <tbody>
-
-                    <!-- 完了済のデータを表示 -->
-
+                    <?php foreach ($completed_plans as $plan) : ?>
+                        <tr>
+                            <td><?= h($plan['title']) ?></td>
+                            <td><?= h(date('Y/m/d', strtotime($plan['completion_date']))) ?></td>
+                            <td><a href="" class="btn done-cancel-btn">未完了</a></td>
+                            <td><a href="" class="btn edit-btn">編集</a></td>
+                            <td><a href="" class="btn delete-btn">削除</a></td>
+                        </tr>
+                    <?php endforeach; ?>
                 </tbody>
             </table>
         </div>

@@ -51,7 +51,7 @@ input {
 }
 
 .complete-area {
-    height: 180px;
+    height: 200px;
 }
 
 .edit-area {
@@ -87,11 +87,12 @@ input {
 }
 .done-btn,
 .edit-btn,
-.delete-btn {
+.delete-btn{
     font-size: 0.9rem;
-    margin-right: 3px;
-    padding: 5px;
-    align-items: right;
+    padding: 5px 33%;
+}
+.done-cancel-btn {
+    padding: 4px 22%;
 }
 .done-btn {
     background-color: blue;
@@ -102,28 +103,38 @@ input {
 .delete-btn {
     background-color: red;
 }
+.done-cancel-btn {
+    text-align: inherit;
+    background-color: rgb(98, 255, 25);
+}
 
 /* table */
 table {
     table-layout: fixed;
-    width: 680px;
+    width: 100%;
+    border-spacing: 0px 8px;
 }
 .plan-title,
-.plan-due-date {
+.plan-due-date,
+.plan-completion-date {
     text-align: left;
 }
 .done-link-area,
 .edit-link-area,
 .delete-link-area {
     text-align: right;
-    width: 50px;
+    width: 10%;
 }
 .plan-title {
-    width: 300px;
+    width: 50%;
 }
-.plan-due-date {
-    width: 150px;
+.plan-due-date,
+.plan-completion-date {
+    width: 17%;
 }
 
 @media (max-width: 800px) {
+}
+
+@media (max-width: 600px) {
 }
