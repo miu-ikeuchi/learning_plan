@@ -22,27 +22,19 @@ function h($str)
     return htmlspecialchars($str, ENT_QUOTES, 'UTF-8');
 }
 
-function insertValidate($title)
+function insertValidate($title, $due_date)
 {
     $error = [];
 
     if ($title == '') {
         $error[] = MSG_TITLE_REQUIRED;
     }
+    if ($due_date == '') {
+        $error[] = MSG_DUE_REQUIRED;
+    }
 
     return $error;
 
-}
-
-function insertDueValidate($due_date)
-{
-    $due_error = [];
-
-    if ($due_date == '') {
-        $due_error[] = MSG_DUE_REQUIRED;
-    }
-
-    return $due_error;
 }
 
 function insertLearningPlan($title, $due_date)

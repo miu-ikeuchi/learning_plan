@@ -4,18 +4,18 @@ require_once __DIR__ . '/config.php';
 
 $title = '';
 $due_date = '';
-$errors = [];
+$error = [];
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // フォームに入力されたデータを受け取る
     $title = filter_input(INPUT_POST, 'title');
     $due_date = filter_input(INPUT_POST, 'due_date');
 
     // バリデーション
-    $error = insertValidate($title);
-    $due_error = insertDueValidate($due_date);
+    $error = insertValidate($title, $due_date);
+    // $due_error = insertDueValidate($due_date);
 
     // エラーチェック
-    if (empty($errors)) {
+    if (empty($error)) {
         // タスク登録処理の実行
         insertLearningPlan($title, $due_date);
     }
@@ -36,7 +36,7 @@ $completed_plans = findPlanByCompDate(PLAN_DATE_COMP);
     <div class="wrapper">
         <h1 class="title">学習管理アプリ</h1>
         <div class="form-area">
-            <?php if ($errors) echo (createErrMsg($errors)) ?>
+            <?php if ($error) echo (createErrMsg($error)) ?>
             <form action="" method="post">
                 <label for="title">学習内容</label>
                 <input type="text" name="title">
