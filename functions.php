@@ -45,41 +45,25 @@ function insertDueValidate($due_date)
     return $due_error;
 }
 
-function insertPlan($title)
+function insertLearningPlan($title, $due_date)
 {
     try {
         $dbh = connectDb();
         $sql = <<<EOM
         INSERT INTO
             plans
-            (title)
+            (title, due_date)
         VALUES
-            (title);
+            (:title, :due_date);
         EOM;
         $stmt = $dbh->prepare($sql);
+        $stmt->bindParam(':title', $title, PDO::PARAM_STR);
+        $stmt->bindValue(':due_date', $due_date, PDO::PARAM_STR);
         $stmt->execute();
     } catch (PDOException $e) {
         echo $e->getMessage();
     }
 }
-
-function insertDue($due_date)
-{
-    try {
-        $dbh = connectDb();
-        $sql = <<<EOM
-        INSERT INTO
-            plans(due_date)
-        VALUES
-            (due_date);
-        EOM;
-        $stmt = $dbh->prepare($sql);
-        $stmt->execute();
-    } catch (PDOException $e) {
-        echo $e->getMessage();
-    }
-}
-
 
 function createErrMsg($errors)
 {

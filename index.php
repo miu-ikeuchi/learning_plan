@@ -17,8 +17,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // エラーチェック
     if (empty($errors)) {
         // タスク登録処理の実行
-        insertPlan($title);
-        insertDue($due_date);
+        insertLearningPlan($title, $due_date);
     }
 }
 
