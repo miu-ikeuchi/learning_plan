@@ -5,9 +5,9 @@
 ---------------------*/
 html {
     font-size: 100%;
-    height: 100vh;
 }
 body {
+    background-size: cover;
     background:linear-gradient(#5140E6, #73A6FA);
     font-family: 'M PLUS Rounded 1c', sans-serif;
 }
@@ -135,6 +135,10 @@ table {
 .plan-due-date,
 .plan-completion-date {
     width: 17%;
+}
+/* 期限切れ赤文字 */
+td.expired {
+    color: red;
 }
 
 @media (max-width: 800px) {

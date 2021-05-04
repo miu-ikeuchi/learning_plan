@@ -12,7 +12,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     // バリデーション
     $error = insertValidate($title, $due_date);
-    // $due_error = insertDueValidate($due_date);
 
     // エラーチェック
     if (empty($error)) {
@@ -61,7 +60,9 @@ $completed_plans = findPlanByCompDate(PLAN_DATE_COMP);
                     <?php foreach ($incomplete_plans as $plan) : ?>
                         <tr>
                             <td><?= h($plan['title']) ?></td>
-                            <td><?= h(date('Y/m/d', strtotime($plan['due_date']))) ?></td>
+                            <td class="<?php if(strtotime("today") >= strtotime($plan['due_date'])) echo "expired"; ?>">
+                                <?= h(date('Y/m/d', strtotime($plan['due_date']))) ?>
+                            </td>
                             <td><a href="" class="btn done-btn">完了</a></td>
                             <td><a href="" class="btn edit-btn">編集</a></td>
                             <td><a href="" class="btn delete-btn">削除</a></td>
