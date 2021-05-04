@@ -57,6 +57,44 @@ function insertLearningPlan($title, $due_date)
     }
 }
 
+function updateValidate($title, $due_date, $plan)
+{
+    $error = [];
+
+    if ($title == '') {
+        $error[] = MSG_TITLE_REQUIRED;
+    }
+    if ($due_date == '') {
+        $error[] = MSG_DUE_REQUIRED;
+    }
+    if ($title == $plan['title'] && $due_date == $plan['due_date']) {
+        $error[] = MSG_UPDATE_REQUIRED;
+    }
+
+    return $error;
+}
+function updatePlan($title, $due_date, $id)
+{
+    $dbh = connectDb();
+
+    $sql = <<<EOM
+    UPDATE
+        plans
+    SET
+        title = :title,
+        due_date = :due_date
+    WHERE
+        id = :id
+    EOM;
+
+    $stmt = $dbh->prepare($sql);
+
+    $stmt->bindParam(':title', $title, PDO::PARAM_STR);
+    $stmt->bindParam(':due_date', $due_date, PDO::PARAM_INT);
+    $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+    $stmt->execute();
+}
+
 function createErrMsg($errors)
 {
     $err_msg = "<ul class=\"errors\">\n";
@@ -107,7 +145,30 @@ function findPlanByCompDate()
     EOM;
 
     $stmt = $dbh->prepare($sql);
+    
     $stmt->execute();
 
     return $stmt->fetchAll(PDO::FETCH_ASSOC);
+}
+
+function findById($id)
+{
+    $dbh = connectDb();
+
+    $sql = <<<EMO
+    SELECT
+        *
+    FROM
+        plans
+    WHERE
+        id = :id;
+    EMO;
+
+    $stmt = $dbh->prepare($sql);
+
+    $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+
+    $stmt->execute();
+
+    return $stmt->fetch(PDO::FETCH_ASSOC);
 }
