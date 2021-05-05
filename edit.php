@@ -28,7 +28,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 <?php include_once __DIR__ . '/_head.html' ?>
 
-<body>
+<body class="edit-page">
     <h1 class="title">学習管理アプリ</h1>
     <div class="edit-area">
         <?php if ($errors) echo (createErrMsg($errors)) ?>
