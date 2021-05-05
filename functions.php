@@ -24,16 +24,16 @@ function h($str)
 
 function insertValidate($title, $due_date)
 {
-    $error = [];
+    $errors = [];
 
     if ($title == '') {
-        $error[] = MSG_TITLE_REQUIRED;
+        $errors[] = MSG_TITLE_REQUIRED;
     }
     if ($due_date == '') {
-        $error[] = MSG_DUE_REQUIRED;
+        $errors[] = MSG_DUE_REQUIRED;
     }
 
-    return $error;
+    return $errors;
 
 }
 
@@ -50,30 +50,43 @@ function insertLearningPlan($title, $due_date)
         EOM;
         $stmt = $dbh->prepare($sql);
         $stmt->bindParam(':title', $title, PDO::PARAM_STR);
-        $stmt->bindValue(':due_date', $due_date, PDO::PARAM_STR);
+        $stmt->bindParam(':due_date', $due_date, PDO::PARAM_STR);
         $stmt->execute();
     } catch (PDOException $e) {
         echo $e->getMessage();
     }
 }
+function createErrMsg($errors)
+{
+    $err_msg = "<ul class=\"errors\">\n";
+
+    foreach ($errors as $error) {
+        $err_msg .= "<li>" . h($error) . "</li>\n";
+    }
+
+    $err_msg .= "</ul>\n";
+
+    return $err_msg;
+}
 
 function updateValidate($title, $due_date, $plan)
 {
-    $error = [];
+    $errors = [];
 
     if ($title == '') {
-        $error[] = MSG_TITLE_REQUIRED;
+        $errors[] = MSG_TITLE_REQUIRED;
     }
     if ($due_date == '') {
-        $error[] = MSG_DUE_REQUIRED;
+        $errors[] = MSG_DUE_REQUIRED;
     }
     if ($title == $plan['title'] && $due_date == $plan['due_date']) {
-        $error[] = MSG_UPDATE_REQUIRED;
+        $errors[] = MSG_UPDATE_REQUIRED;
     }
 
-    return $error;
+    return $errors;
 }
-function updatePlan($title, $due_date, $id)
+
+function updatePlan($id, $title, $due_date)
 {
     $dbh = connectDb();
 
@@ -89,23 +102,11 @@ function updatePlan($title, $due_date, $id)
 
     $stmt = $dbh->prepare($sql);
 
-    $stmt->bindParam(':title', $title, PDO::PARAM_STR);
-    $stmt->bindParam(':due_date', $due_date, PDO::PARAM_INT);
+    $stmt->bindParam(':title',$title,PDO::PARAM_STR);
+    $stmt->bindParam(':due_date',$due_date,PDO::PARAM_STR);
     $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+
     $stmt->execute();
-}
-
-function createErrMsg($errors)
-{
-    $err_msg = "<ul class=\"errors\">\n";
-
-    foreach ($errors as $error) {
-    $err_msg .= "<li>" . h($error) . "</li>\n";
-    }
-
-    $err_msg .= "</ul>\n";
-
-    return $err_msg;
 }
 
 function findPlanByDate()

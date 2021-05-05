@@ -7,15 +7,15 @@ $plan = findById($id);
 
 $title = '';
 $due_date = '';
-$error = [];
+$errors = [];
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $title = filter_input(INPUT_POST, 'title');
     $due_date =filter_input(INPUT_POST, 'due_date');
 
-    $error = updateValidate($title, $due_date, $plan);
+    $errors = updateValidate($title, $due_date, $plan);
 
-    if (empty($error)) {
+    if (empty($errors)) {
         updatePlan($id, $title, $due_date);
         header('Location: index.php');
         exit;
@@ -31,7 +31,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <body>
     <h1 class="title">学習管理アプリ</h1>
     <div class="edit-area">
-        <?php if ($error) echo (createErrMsg($error)) ?>
+        <?php if ($errors) echo (createErrMsg($errors)) ?>
         <h2 class="sub-title">編集</h2>
         <form action="" method="post">
             <label for="title">学習内容</label>
