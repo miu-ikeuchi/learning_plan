@@ -100,7 +100,7 @@ input {
 .edit-btn,
 .delete-btn {
     font-size: 1rem;
-    width: 10%;
+    padding: 8% 30%;
 }
 .done-btn {
     background-color: blue;
@@ -147,80 +147,59 @@ td.expired {
 }
 
 @media (max-width: 800px) {
- /* 外枠 */
-.form-area,
-.incomplete-area,
-.complete-area {
-    margin: 10px 12%;
-    padding: 20px 40px;
-}
-.edit-area {
-    margin: 0 12%;
-    padding: 20px 40px;
-}
-/* ボタン */
-.done-btn,
-.edit-btn,
-.delete-btn {
-    font-size: 1rem;
-}
-/* table */
-table {
-    table-layout: fixed;
-    width: 100%;
-    border-spacing: 5px 15px;
-}
-.done-link-area,
-.edit-link-area,
-.delete-link-area {
-    text-align: right;
-    width: 10%;
-}
-.plan-title {
-    width: 23%;
-}
-.plan-due-date,
-.plan-completion-date {
-    width: 17%;
-}
+    /* 外枠 */
+    .form-area,
+    .incomplete-area,
+    .complete-area {
+        margin: 10px 12%;
+        padding: 20px 5%;
+    }
+    .edit-area {
+        margin: 0 10%;
+    }
+    /* ボタン */
+    .done-btn,
+    .edit-btn,
+    .delete-btn {
+        padding: 10% 25%;
+    }
+    .done-cancel-btn {
+        padding: 10% 13%;
+    }
+    .plan-title {
+        width: 23%;
+    }
+    .plan-due-date,
+    .plan-completion-date {
+        width: 17%;
+    }
 }
 
 @media (max-width: 600px) {
-/* 外枠 */
-.form-area,
-.incomplete-area,
-.complete-area {
-    margin: 10px 10%;
-    padding: 20px 40px;
-}
-.edit-area {
-    margin: 0 10%;
-    padding: 20px 40px;
-}
-/* ボタン */
-.done-btn,
-.edit-btn,
-.delete-btn {
-    font-size: 1rem;
-    padding: 6px 30%;
-}
-/* table */
-table {
-    table-layout: fixed;
-    width: 100%;
-    border-spacing: 5px 15px;
-}
-.done-link-area,
-.edit-link-area,
-.delete-link-area {
-    text-align: right;
-    width: 10%;
-}
-.plan-title {
-    width: 17%;
-}
-.plan-due-date,
-.plan-completion-date {
-    width: 17%;
-}
+    /* 外枠 */
+    .form-area,
+    .incomplete-area,
+    .complete-area {
+        margin: 10px 10%;
+        padding: 20px 5%;
+    }
+    .edit-area {
+        margin: 0 10%;
+    }
+    /* ボタン */
+    .done-btn,
+    .edit-btn,
+    .delete-btn {
+        padding: 10% 20%;
+    }
+    .done-cancel-btn {
+        padding: 10% 7%;
+    }
+    .plan-title {
+        width: 17%;
+    }
+    .plan-due-date,
+    .plan-completion-date {
+        width: 17%;
+    }
 }
