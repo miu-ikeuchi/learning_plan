@@ -99,8 +99,9 @@ input {
 .done-btn,
 .edit-btn,
 .delete-btn {
+    display: block;
     font-size: 1rem;
-    padding: 8% 30%;
+    padding: 8% 0;
 }
 .done-btn {
     background-color: blue;
@@ -112,7 +113,8 @@ input {
     background-color: red;
 }
 .done-cancel-btn {
-    padding: 6px 20%;
+    display: block;
+    padding: 6px 0;
     font-size: 1rem;
     background-color: rgb(98, 255, 25);
 }
@@ -157,15 +159,6 @@ td.expired {
     .edit-area {
         margin: 0 10%;
     }
-    /* ボタン */
-    .done-btn,
-    .edit-btn,
-    .delete-btn {
-        padding: 10% 25%;
-    }
-    .done-cancel-btn {
-        padding: 10% 13%;
-    }
     .plan-title {
         width: 23%;
     }
@@ -185,15 +178,6 @@ td.expired {
     }
     .edit-area {
         margin: 0 10%;
-    }
-    /* ボタン */
-    .done-btn,
-    .edit-btn,
-    .delete-btn {
-        padding: 10% 20%;
-    }
-    .done-cancel-btn {
-        padding: 10% 7%;
     }
     .plan-title {
         width: 17%;
