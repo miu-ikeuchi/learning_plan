@@ -86,6 +86,22 @@ function updateValidate($title, $due_date, $plan)
     return $errors;
 }
 
+function addCompletionDate($id)
+{
+    $dbh = connectDb();
+    $sql = <<<EOM
+    UPDATE
+        plans
+    SET
+        completion_date = CURRENT_DATE
+    WHERE
+        id = :id
+    EOM;
+    $stmt = $dbh->prepare($sql);
+    $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+    $stmt->execute();
+}
+
 function updatePlan($id, $title, $due_date)
 {
     $dbh = connectDb();
@@ -108,6 +124,39 @@ function updatePlan($id, $title, $due_date)
 
     $stmt->execute();
 }
+
+function deletePlan($id)
+{ 
+    $dbh = connectDb();
+
+    $sql = <<<EOM
+    DELETE FROM
+        plans
+    WHERE
+        id = :id
+    EOM;
+
+    $stmt = $dbh->prepare($sql);
+    $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+    $stmt->execute();
+}
+
+function deleteCompletionDate($id)
+{
+    $dbh = connectDb();
+    $sql = <<<EOM
+    UPDATE
+        plans
+    SET
+        completion_date = NULL
+    WHERE
+        id = :id
+    EOM;
+    $stmt = $dbh->prepare($sql);
+    $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+    $stmt->execute();
+}
+
 
 function findPlanByDate()
 {

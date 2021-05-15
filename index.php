@@ -63,9 +63,9 @@ $completed_plans = findPlanByCompDate(PLAN_DATE_COMP);
                             <td class="<?php if (strtotime("today") >= strtotime($plan['due_date'])) echo "expired"; ?>">
                                 <?= h(date('Y/m/d', strtotime($plan['due_date']))) ?>
                             </td>
-                            <td><a href="" class="btn done-btn">完了</a></td>
+                            <td><a href="done.php?id=<?= h($plan['id']) ?>" class="btn done-btn">完了</a></td>
                             <td><a href="edit.php?id=<?= h($plan['id']) ?>" class="btn edit-btn">編集</a></td>
-                            <td><a href="" class="btn delete-btn">削除</a></td>
+                            <td><a href="delete.php?id=<?= h($plan['id']) ?>" class="btn delete-btn">削除</a></td>
                         </tr>
                     <?php endforeach; ?>
                 </tbody>
@@ -88,9 +88,9 @@ $completed_plans = findPlanByCompDate(PLAN_DATE_COMP);
                         <tr>
                             <td><?= h($plan['title']) ?></td>
                             <td><?= h(date('Y/m/d', strtotime($plan['completion_date']))) ?></td>
-                            <td><a href="" class="btn done-cancel-btn">未完了</a></td>
-                            <td><a href="" class="btn edit-btn">編集</a></td>
-                            <td><a href="" class="btn delete-btn">削除</a></td>
+                            <td><a href="done_cancel.php?id=<?= h($plan['id']) ?>" class="btn done-cancel-btn">未完了</a></td>
+                            <td><a href="edit.php?id=<?= h($plan['id']) ?>" class="btn edit-btn">編集</a></td>
+                            <td><a href="delete.php?id=<?= h($plan['id']) ?>" class="btn delete-btn">削除</a></td>
                         </tr>
                     <?php endforeach; ?>
                 </tbody>
