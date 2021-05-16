@@ -1,0 +1,189 @@
+@charset "UTF-8";
+
+
+/* 共通部分
+---------------------*/
+html {
+    font-size: 100%;
+}
+body {
+    background-size: cover;
+    background:linear-gradient(#5140E6, #73A6FA);
+    font-family: 'M PLUS Rounded 1c', sans-serif;
+}
+h1 {
+    margin:30px 10px 10px;
+    color: white;
+    text-align: center;
+}
+h2 {
+    text-align: center;
+    border-bottom:solid 2px lightgray;
+}
+.sub-title {
+    letter-spacing: 0.8em;
+    margin-bottom: 15px;
+    padding-bottom: 8px;
+}
+.errors {
+    color: #ed2222;
+    background-color: #f0cdcd;
+    list-style: none;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    padding: 10px 20px;
+}
+/* 外枠 */
+.form-area,
+.incomplete-area,
+.complete-area {
+    margin: 10px 18%;
+    border-radius: 5px;
+    background-color: white;
+    padding: 20px 4%;
+}
+.edit-page {
+    height: 100vh;
+}
+.edit-area {
+    margin: 0 18%;
+    border-radius: 5px;
+    background-color: white;
+    padding: 20px 4%;
+}
+input {
+    border: 1px solid #b8b4b4;
+    border-radius: 3px;
+    width: 100%;
+}
+
+/* ボタン */
+.btn {
+    color: #fff;
+    border-radius: 5px;
+    text-align: center;
+    text-decoration: none;
+}
+.submit-btn:hover {
+    background-color:rgb(255, 154, 255);
+}
+.return-btn:hover {
+    background-color:rgb(113, 113, 255);
+}
+.submit-btn, 
+.return-btn {
+    width: 100%;
+    margin-top: 20px;
+    padding: 5px 0;
+    letter-spacing: 1.5rem;
+}
+.submit-btn {
+    background-color: rgb(255, 0, 242);
+}
+.return-btn {
+    display: block;
+    background-color: blue;
+}
+.done-btn:hover {
+    background-color:rgb(113, 113, 255);
+}
+.edit-btn:hover {
+    background-color: rgb(255, 202, 104);
+}
+.delete-btn:hover {
+    background-color:rgb(255, 97, 97);
+}
+.done-cancel-btn:hover {
+    background-color:rgb(162, 248, 123);
+}
+.done-btn,
+.edit-btn,
+.delete-btn {
+    display: block;
+    font-size: 1rem;
+    padding: 8% 0;
+}
+.done-btn {
+    background-color: blue;
+}
+.edit-btn {
+    background-color:orange;
+}
+.delete-btn {
+    background-color: red;
+}
+.done-cancel-btn {
+    display: block;
+    padding: 6px 0;
+    font-size: 1rem;
+    background-color: rgb(98, 255, 25);
+}
+
+/* table */
+table {
+    table-layout: fixed;
+    width: 100%;
+    border-spacing: 5px 15px;
+}
+.plan-title,
+.plan-due-date,
+.plan-completion-date {
+    text-align: left;
+}
+.done-link-area,
+.edit-link-area,
+.delete-link-area {
+    text-align: right;
+    width: 10%;
+}
+.plan-title {
+    width: 50%;
+}
+.plan-due-date,
+.plan-completion-date {
+    width: 17%;
+}
+/* 期限切れ赤文字 */
+td.expired {
+    color: red;
+}
+
+@media (max-width: 800px) {
+    /* 外枠 */
+    .form-area,
+    .incomplete-area,
+    .complete-area {
+        margin: 10px 12%;
+        padding: 20px 5%;
+    }
+    .edit-area {
+        margin: 0 10%;
+    }
+    .plan-title {
+        width: 23%;
+    }
+    .plan-due-date,
+    .plan-completion-date {
+        width: 17%;
+    }
+}
+
+@media (max-width: 600px) {
+    /* 外枠 */
+    .form-area,
+    .incomplete-area,
+    .complete-area {
+        margin: 10px 10%;
+        padding: 20px 5%;
+    }
+    .edit-area {
+        margin: 0 10%;
+    }
+    .plan-title {
+        width: 17%;
+    }
+    .plan-due-date,
+    .plan-completion-date {
+        width: 17%;
+    }
+}
